@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skeebert"
+version = "0.1.0"
+description = "A Discord trinket that learns to draw its own alien glyph language from human guesses."
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+# Everything the whole project needs lives here so nobody has to touch this
+# file again just to add the bot or the brain:
+#   torch / numpy / pillow   -- the glyph model, renderer and image export
+#   sentence-transformers    -- embeds human guesses and intent glosses (scoring)
+#   anthropic                -- the LLM "brain" that picks intents
+#   discord.py               -- the bot
+#   python-dotenv            -- reads the .env with tokens
+dependencies = [
+    "torch>=2.2",
+    "numpy>=1.26",
+    "pillow>=10.0",
+    "sentence-transformers>=3.0",
+    "anthropic>=0.40",
+    "discord.py>=2.3",
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+skeebert = "skeebert.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["skeebert*"]
+
+# uv users get the CPU-only torch build automatically -- no multi-GB CUDA
+# wheels on Linux boxes.
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+# Only on Linux: macOS wheels on PyPI are already CPU(+MPS)-only, and the
+# pytorch CPU index publishes `+cpu` builds that have no macOS wheel.
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+filterwarnings = ["ignore::UserWarning"]
