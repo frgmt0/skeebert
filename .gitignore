@@ -12,3 +12,4 @@ renders/
 *.db
 site/.wrangler/
 node_modules/
+.gstack/

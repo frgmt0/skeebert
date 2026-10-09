@@ -5,49 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>skeebert: terms</title>
 <meta name="description" content="Skeebert is a small alien that talks in glyphs. You learn its language by guessing.">
+<meta name="theme-color" content="#0e1018" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eceef2" media="(prefers-color-scheme: light)">
+<link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
+<script src="/site.js" defer></script>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 <header class="top">
-<a class="brand" href="/"><svg class="glyph" width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 30 Q14 6 20 22 T33 9"/><circle cx="12" cy="31" r="1.5"/></svg>skeebert</a>
-<nav class="main" aria-label="Main">
-<a href="/">home</a><a href="/privacy">privacy</a><a href="/terms" aria-current="page">terms</a><a href="/aup">acceptable use</a>
+<div class="wrap">
+<a class="wordmark" href="/">skeebert</a>
+<nav aria-label="Main">
+<a href="/privacy">Privacy</a><a href="/terms" aria-current="page">Terms</a><a href="/aup">Acceptable use</a>
 </nav>
+</div>
 </header>
-<main>
+
+<main id="main" class="doc">
+<div class="wrap">
+<div class="doc-head" data-reveal>
 <h1>Terms of service</h1>
-<p class="note">Effective October 8, 2026.</p>
+</div>
+<div class="doc-grid">
+<nav class="toc" aria-label="On this page">
+<ol>
+<li><a href="#what-skeebert-is">What Skeebert is</a></li>
+<li><a href="#free-and-staying-free">Free, and staying free</a></li>
+<li><a href="#discord-s-rules-come-first">Discord's rules come first</a></li>
+<li><a href="#your-words">Your words</a></li>
+<li><a href="#what-you-can-t-do">What you can't do</a></li>
+<li><a href="#enforcement-and-endings">Enforcement and endings</a></li>
+<li><a href="#no-warranties-plainly">No warranties, plainly</a></li>
+<li><a href="#changes">Changes</a></li>
+</ol>
+</nav>
+<article class="doc-body">
+<p class="effective">Effective October 8, 2026.</p>
 <p>These are the terms for talking to Skeebert, written to be read. Using the bot means you're okay with them.</p>
 
-<h2>What Skeebert is</h2>
+<h2 id="what-skeebert-is">What Skeebert is</h2>
 <p>Skeebert is an experiment: an alien-ish bot that speaks in glyphs, with a small model trained from scratch and a brain that runs on Anthropic's API. It's provided as is, for fun and for research. Its glyphs will be meaningless for a long time and may be strange forever. Nothing it does is advice of any kind, and you shouldn't rely on it for anything that matters.</p>
 
-<h2>Free, and staying free</h2>
+<h2 id="free-and-staying-free">Free, and staying free</h2>
 <p>Skeebert is not a paid service. No subscription, no premium tier, no selling of access. It stays that way for as long as it holds data collected through Discord, which is our reading of, and our commitment to, Discord's terms on monetising platform data. No data collected through Discord would be sold without the express consent of Discord itself, which we do not intend to seek.</p>
 
-<h2>Discord's rules come first</h2>
+<h2 id="discord-s-rules-come-first">Discord's rules come first</h2>
 <p>You must follow the Discord Terms of Service and Community Guidelines when you use Skeebert, and be old enough to use Discord where you live. Skeebert operates under the Discord Developer Terms of Service and Developer Policy. If Discord's rules and these terms disagree, Discord's rules win.</p>
 
-<h2>Your words</h2>
+<h2 id="your-words">Your words</h2>
 <p>Skeebert keeps what you send it by default, and sends your messages to Anthropic's API so its brain can respond. Both are explained in the <a href="/privacy">privacy policy</a>, including how to stop keeping or delete everything with <code>/skeebert privacy</code>. By using Skeebert you agree to that. Your messages remain yours; you give Skeebert permission to store them and learn from them until you delete them.</p>
 
-<h2>What you can't do</h2>
+<h2 id="what-you-can-t-do">What you can't do</h2>
 <p>The <a href="/aup">acceptable use policy</a> is part of these terms. In short: don't use Skeebert to harm people, break Discord's rules, or poison the language.</p>
 
-<h2>Enforcement and endings</h2>
+<h2 id="enforcement-and-endings">Enforcement and endings</h2>
 <p>We can decline to store contributions, remove data, or stop responding to anyone who breaks these terms. We may also pause or shut down Skeebert at any time. If that happens, the deletion commitments in the privacy policy still stand for data already collected.</p>
 
-<h2>No warranties, plainly</h2>
+<h2 id="no-warranties-plainly">No warranties, plainly</h2>
 <p>Skeebert comes with no guarantees: not that it will be available, accurate, or sensible. To the fullest extent the law allows, the operator isn't liable for anything Skeebert says or for anything you do with it. It's a small free experiment run in good faith.</p>
 
-<h2>Changes</h2>
+<h2 id="changes">Changes</h2>
 <p>If these terms change in a way that matters, it will be announced in Discord and shown here. Questions: <a href="https://github.com/frgmt0/skeebert">github.com/frgmt0/skeebert</a>.</p>
-</main>
-<footer>
-<a href="/privacy">privacy policy</a><a href="/terms">terms of service</a><a href="/aup">acceptable use</a><a href="https://booper.frgmt.xyz">booper</a><a href="https://github.com/frgmt0/skeebert">github</a>
-<p>No analytics, no tracking, no cookies on this site.</p>
-</footer>
+</article>
 </div>
+</div>
+</main>
+
+<footer class="foot">
+<div class="wrap">
+<nav aria-label="Footer">
+<a href="/">Home</a><a href="/privacy">Privacy policy</a><a href="/terms">Terms of service</a><a href="/aup">Acceptable use</a><a href="https://booper.frgmt.xyz">booper</a><a href="https://github.com/frgmt0/skeebert">GitHub</a>
+</nav>
+<p>No analytics, no tracking, no cookies on this site.</p>
+</div>
+</footer>
 </body>
 </html>

@@ -5,82 +5,248 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>skeebert</title>
 <meta name="description" content="Skeebert is a small alien that talks in glyphs. You learn its language by guessing.">
+<meta name="theme-color" content="#0e1018" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eceef2" media="(prefers-color-scheme: light)">
+<link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/glyphs/glyphs.json" as="fetch" type="application/json" crossorigin>
 <link rel="stylesheet" href="/style.css">
+<script src="/site.js" defer></script>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 <header class="top">
-<a class="brand" href="/"><svg class="glyph" width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 30 Q14 6 20 22 T33 9"/><circle cx="12" cy="31" r="1.5"/></svg>skeebert</a>
-<nav class="main" aria-label="Main">
-<a href="/" aria-current="page">home</a><a href="/privacy">privacy</a><a href="/terms">terms</a><a href="/aup">acceptable use</a>
+<div class="wrap">
+<a class="wordmark" href="/" aria-current="page">skeebert</a>
+<nav aria-label="Main">
+<a href="#decode">Decode</a><a href="#specs">Specs</a><a href="/privacy">Privacy</a>
 </nav>
+</div>
 </header>
-<main>
-<h1>A small alien that talks in glyphs.</h1>
-<p class="lead">Skeebert doesn't use words. It draws little stroke pictures, and you work out what they mean. Nobody knows the language yet, including Skeebert. We're making it up together.</p>
-<div class="hero" aria-hidden="true">
-<svg class="glyph" viewBox="0 0 60 60"><path d="M10 48 Q18 8 30 30 T50 12"/><path d="M14 20 L22 26"/></svg>
-<svg class="glyph" viewBox="0 0 60 60"><circle cx="30" cy="30" r="16"/><path d="M30 14 L30 4"/><path d="M22 34 Q30 42 38 34"/></svg>
-<svg class="glyph" viewBox="0 0 60 60"><path d="M12 14 L48 18 L40 46 L16 40 Z"/><path d="M26 28 L34 30"/></svg>
-<svg class="glyph" viewBox="0 0 60 60"><path d="M8 40 Q30 -2 52 40"/><path d="M20 44 L40 44"/><circle cx="30" cy="26" r="2"/></svg>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+<div class="wrap">
+<div class="hero-glyph" id="hero-glyph"></div>
+<h1 id="hero-title">Skeebert</h1>
+<p class="claim">Our most expressive model yet.<sup class="fn"><a href="#fn-1" id="ref-1" aria-label="Footnote 1">1</a></sup></p>
+<p class="lede">A small alien that talks in glyphs. You learn its language by guessing. Nobody knows the language yet, including Skeebert. We're making it up together.</p>
+<a class="go" href="#use">How to talk to it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M3 8.5 8 13.5l5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
-<p class="note">Decoration only. These shapes are not real Skeebert output and don't mean anything.</p>
+</section>
 
-<h2>What it is</h2>
-<p>Skeebert is a Discord bot inspired by Rocky from <em>Project Hail Mary</em>, an alien whose language you have to learn before you can talk to him. Skeebert answers in <strong>glyphs</strong> instead of words. At first they're noise. As people guess what they mean, a shared picture language is supposed to take shape.</p>
-<p>It's a sibling of <a href="https://booper.frgmt.xyz">booper</a>. Booper learns words from scratch; Skeebert learns pictures from scratch.</p>
+<section class="block real" aria-labelledby="real-title">
+<div class="wrap split">
+<div class="head" data-reveal>
+<h2 id="real-title">That's a real glyph.</h2>
+</div>
+<div class="body" data-reveal>
+<p class="big" id="real-copy">Nothing on this page is drawn by hand. The glyphs come straight out of Skeebert's model: six quadratic strokes, each one eight numbers.</p>
+<noscript><p class="muted">The drawing above, and the decoding game below, need JavaScript. The numbers further down don't.</p></noscript>
+</div>
+</div>
+</section>
 
-<h2>How to use it</h2>
+<section class="block" aria-labelledby="what-title">
+<div class="wrap split">
+<div class="head" data-reveal>
+<h2 id="what-title">It answers in pictures. You do the translating.</h2>
+</div>
+<div class="body" data-reveal>
+<p class="big">Skeebert is a Discord bot inspired by Rocky from <em>Project Hail Mary</em>, an alien whose language you have to learn before you can talk to him.</p>
+<p class="muted">Skeebert answers in glyphs instead of words. At first they're noise. As people guess what they mean, a shared picture language is supposed to take shape.</p>
+<p class="muted">It's a sibling of <a href="https://booper.frgmt.xyz">booper</a>. Booper learns words from scratch; Skeebert learns pictures from scratch.</p>
+</div>
+</div>
+</section>
+
+<section class="block" id="use" aria-labelledby="use-title">
+<div class="wrap split">
+<div class="head stick" data-reveal>
+<h2 id="use-title">Three steps. The third is a formality.</h2>
+</div>
+<div class="body" data-reveal>
 <ol class="steps">
-<li><strong>Talk to it.</strong> Say <code>@skeebert hey are you hungry?</code> or use <code>/skeebert say &lt;message&gt;</code>. It answers with a glyph.</li>
-<li><strong>Guess.</strong> Tap the <strong>Guess</strong> button under the glyph to see how close you were and what it really meant. Or just reply to the glyph with your guess: Skeebert reacts with how close you were, and tapping <strong>Guess</strong> shows what it meant.</li>
-<li><strong>That's it.</strong> Every guess teaches it. Try <code>/skeebert dictionary</code> to see the glyphs people have cracked so far.</li>
+<li><div><h3>Talk to it.</h3><p>Say <code>@skeebert hey are you hungry?</code> or use <code>/skeebert say &lt;message&gt;</code>. It answers with a glyph.</p></div></li>
+<li><div><h3>Guess.</h3><p>Tap the <strong>Guess</strong> button under the glyph to see how close you were and what it really meant. Or just reply to the glyph with your guess: Skeebert reacts with how close you were, and tapping <strong>Guess</strong> shows what it meant.</p></div></li>
+<li><div><h3>That's it.</h3><p>Every guess teaches it. Try <code>/skeebert dictionary</code> to see the glyphs people have cracked so far.</p></div></li>
 </ol>
-<p class="note">Also: <code>/skeebert help</code> and <code>/skeebert privacy</code>. Skeebert keeps what you send it by default; see <a href="/privacy">privacy</a>.</p>
-
-<h2>How it works</h2>
-<svg class="diagram" viewBox="0 0 640 130" role="img" aria-label="Diagram: you send a message, the brain picks one to three concepts, the mouth draws a glyph, you guess, and the guess becomes training data for the mouth.">
-<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
-<g stroke="currentColor" stroke-width="2" fill="none" marker-end="url(#ar)">
-<path d="M130 45 L168 45"/><path d="M290 45 L328 45"/><path d="M450 45 L488 45"/>
-<path d="M550 76 L550 108 L230 108 L230 78" stroke-dasharray="5 5"/>
-</g>
-<rect class="box" x="10" y="15" width="120" height="60" rx="12"/><text x="70" y="50" text-anchor="middle">you</text>
-<rect class="box" x="170" y="15" width="120" height="60" rx="12"/><text x="230" y="40" text-anchor="middle">brain</text><text x="230" y="58" text-anchor="middle">picks concepts</text>
-<rect class="box" x="330" y="15" width="120" height="60" rx="12"/><text x="390" y="40" text-anchor="middle">mouth</text><text x="390" y="58" text-anchor="middle">draws a glyph</text>
-<rect class="box" x="490" y="15" width="120" height="60" rx="12"/><text x="550" y="40" text-anchor="middle">you guess</text><text x="550" y="58" text-anchor="middle">it reveals</text>
-<text x="390" y="126" text-anchor="middle">guesses become training data for the mouth</text>
-</svg>
-<p>Skeebert has two parts.</p>
-<p>The <strong>brain</strong> is Claude Haiku 5.5, reached through Anthropic's API. It decides what Skeebert wants to say, as one to three concepts from a fixed vocabulary of about 200, like "excited", "food" or "question". The brain never picks shapes.</p>
-<p>The <strong>mouth</strong> is Skeebert's own small model, about 20 million parameters, trained from scratch and starting as pure noise. It turns those concepts into a glyph. The picture language is learned entirely from people.</p>
-<p>When you guess, your guess is scored against what Skeebert actually meant, by similarity of meaning. Getting one of the concepts earns partial credit. Then Skeebert reveals the meaning. Those guesses are the training data.</p>
-<p>When the daily API budget runs out, Skeebert falls asleep: it keeps talking with a simpler local brain until the next day.</p>
-
-<h2>The goal</h2>
-<p>A visual language that two sides learn from each other, and that becomes <em>compositional</em>: glyphs that combine, so that food + question could read as "are you hungry?". Skeebert should end up with a language you picked up by playing, not by reading a manual.</p>
-
-<h2>Roadmap</h2>
-<p>These are intentions, not promises. Plans change, and some of this may never happen.</p>
-<ol class="roadmap">
-<li class="now"><span class="tag">now</span><strong>Collecting guesses.</strong> Infrastructure is built. Glyphs are untrained noise.</li>
-<li><span class="tag">phase 1</span><strong>First training.</strong> A bootstrap where Skeebert plays a guessing game with itself so glyphs become distinguishable, then learning from human guesses.</li>
-<li><span class="tag">phase 2</span><strong>Compositional glyphs</strong> that combine concepts, and a public dictionary page.</li>
-<li><span class="tag">phase 3</span><strong>Sentences</strong>, meaning sequences of glyphs. Maybe animated glyphs, maybe sound like Rocky's chords.</li>
-<li><span class="tag">phase 4</span><strong>Its own brain.</strong> A small model trained to make the choices Haiku makes, learned from Haiku's past answers. It would first think for Skeebert while it's asleep, then take over more as it gets good. Haiku becomes a teacher it outgrows.</li>
-<li><span class="tag">someday</span><strong>Meeting booper.</strong> Maybe Skeebert and booper talk to each other.</li>
-</ol>
-
-<h2>Honest expectations</h2>
-<p>At first the glyphs are noise and mean nothing. Training hasn't started yet; the first runs happen once enough guesses have been collected. It will learn slowly, and it may never become fluent. If it does, you'll have helped invent a language.</p>
-
-<h2>The fine print</h2>
-<p>Skeebert is free and stays free. It keeps what you send it by default and tells you so up front: read the <a href="/privacy">privacy policy</a>, <a href="/terms">terms</a> and <a href="/aup">acceptable use</a>. Questions or problems: <a href="https://github.com/frgmt0/skeebert">github.com/frgmt0/skeebert</a>.</p>
-</main>
-<footer>
-<a href="/privacy">privacy policy</a><a href="/terms">terms of service</a><a href="/aup">acceptable use</a><a href="https://booper.frgmt.xyz">booper</a><a href="https://github.com/frgmt0/skeebert">github</a>
-<p>No analytics, no tracking, no cookies on this site.</p>
-</footer>
+<p class="after-steps">Also: <code>/skeebert help</code> and <code>/skeebert privacy</code>. Skeebert keeps what you send it by default; see <a href="/privacy">privacy</a>.</p>
 </div>
+</div>
+</section>
+
+<section class="block" id="how" aria-labelledby="how-title">
+<div class="wrap">
+<h2 id="how-title" data-reveal>Two parts. One of them is rented.</h2>
+<div class="flow" data-reveal>
+<div class="stage">
+<h3>Brain</h3>
+<p><strong>Claude Haiku 5.5</strong>, reached through Anthropic's API. It decides what Skeebert wants to say, as one to three concepts from a fixed vocabulary of <span data-spec="n_concepts">218</span>, like “excited”, “food” or “question”.</p>
+<p>It never picks shapes.</p>
+</div>
+<svg class="arrow" viewBox="0 0 96 40" preserveAspectRatio="none" aria-hidden="true"><path d="M2 20H92M80 9l12 11-12 11"/></svg>
+<div class="stage">
+<h3>Mouth</h3>
+<p><strong>Skeebert's own small model</strong>, trained from scratch and starting as pure noise. A <span data-spec="speaker_short">10.7M</span>-parameter speaker turns the concepts into a glyph.</p>
+<p>The picture language is learned entirely from people.</p>
+</div>
+<svg class="arrow" viewBox="0 0 96 40" preserveAspectRatio="none" aria-hidden="true"><path d="M2 20H92M80 9l12 11-12 11"/></svg>
+<div class="stage">
+<h3>You</h3>
+<p><strong>You guess.</strong> Your guess is scored against what Skeebert actually meant, by similarity of meaning. Getting one of the concepts earns partial credit. Then Skeebert reveals the meaning.</p>
+<p>Those guesses are the training data. They go straight back into the mouth.</p>
+</div>
+<div class="loop" aria-hidden="true">
+<svg viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true"><path class="dash" d="M396 2V30Q396 40 386 40H14Q4 40 4 30V6"/><path class="tip" d="M-2 12 4 4 10 12"/></svg>
+</div>
+</div>
+<div class="split sleep" data-reveal>
+<div class="head"><h3 class="visually-hidden">Sleep</h3></div>
+<div class="body">
+<p class="big">The brain gets a daily budget of $6. When it runs out, Skeebert falls asleep 💤 and keeps talking with a simpler local brain until the next day.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="block" id="decode" aria-labelledby="decode-title">
+<div class="wrap">
+<div class="split">
+<div class="head" data-reveal><h2 id="decode-title">Decode one.</h2></div>
+<div class="body" data-reveal>
+<p class="big" id="decode-intro">Pick a glyph, then pick what you think it means. These are the actual images Skeebert sends to Discord.</p>
+</div>
+</div>
+<div class="decode-ui" id="decode-ui" hidden>
+<div class="decode-stage"><img id="decode-img" alt="" width="768" height="768"></div>
+<div class="decode-panel">
+<h3 id="decode-q">What does this glyph mean?</h3>
+<ul class="options" id="decode-options" aria-labelledby="decode-q"></ul>
+<p class="result" id="decode-result" aria-live="polite"></p>
+<div class="decode-actions">
+<button class="btn" type="button" id="decode-next">Another glyph</button>
+<span class="tally" id="decode-tally" aria-live="polite"></span>
+</div>
+<p><a class="png-link" id="decode-png" href="#">Open the full 512 × 512 PNG</a></p>
+</div>
+<ul class="strip" id="decode-strip" aria-label="Choose a glyph"></ul>
+</div>
+</div>
+</section>
+
+<section class="block" id="specs" aria-labelledby="specs-title">
+<div class="wrap">
+<h2 id="specs-title" data-reveal>The numbers. All of them real.</h2>
+<dl class="specs">
+<div class="row" data-reveal>
+<dt>Parameters</dt>
+<dd><span class="v" data-spec="total">21,060,146</span>
+<ul class="parts">
+<li><b data-spec="speaker">10,738,616</b>Speaker</li>
+<li><b data-spec="listener">5,118,186</b>Listener</li>
+<li><b data-spec="proxy">5,203,344</b>Human proxy</li>
+</ul>
+<span class="d">The mouth runs on the speaker alone. The listener and the human proxy only exist to train it.</span></dd>
+</div>
+<div class="row" data-reveal>
+<dt>Output</dt>
+<dd><span class="v"><span data-spec="n_strokes">6</span> strokes × <span data-spec="params_per_stroke">8</span> numbers</span>
+<span class="d">Each stroke is a quadratic Bézier curve: three points, a half-width and an intensity. Rendered at 512 × 512.</span></dd>
+</div>
+<div class="row" data-reveal>
+<dt>Vocabulary</dt>
+<dd><span class="v"><span data-spec="n_concepts">218</span> concepts</span>
+<span class="d">In <span data-spec="n_categories">9</span> categories: people, feelings, speech, actions, things, places, time, quantities and modifiers.</span></dd>
+</div>
+<div class="row" data-reveal>
+<dt>Range</dt>
+<dd><span class="v"><span data-spec="possible_messages">1,726,887</span> possible messages<sup class="fn"><a href="#fn-2" id="ref-2" aria-label="Footnote 2">2</a></sup></span>
+<span class="d">One to <span data-spec="max_atoms">3</span> concepts per glyph.</span></dd>
+</div>
+<div class="row" data-reveal>
+<dt>Pretraining</dt>
+<dd><span class="v">None</span>
+<span class="d">Trained from random noise. Stage one is a self-play game: a listener picks the right meaning out of 16 candidates, where chance is 6.25%. Every 5,000 steps the listener is swapped for a fresh one, which pushes the language toward reusable parts a newcomer can pick up. Then <em>proxy</em> and <em>align</em> learn from people, once there are 300+ human guesses.</span></dd>
+</div>
+<div class="row" data-reveal>
+<dt>Brain</dt>
+<dd><span class="v">Claude Haiku 5.5</span>
+<span class="d">By Anthropic, through its API. Chooses concepts with structured output, about $0.0003 a message.<sup class="fn"><a href="#fn-3" id="ref-3" aria-label="Footnote 3">3</a></sup></span></dd>
+</div>
+<div class="row" data-reveal>
+<dt>Battery life</dt>
+<dd><span class="v">$6 a day</span>
+<span class="d">Then it falls asleep 💤 and a simpler local brain answers until tomorrow.</span></dd>
+</div>
+<div class="row" data-reveal>
+<dt>Price</dt>
+<dd><span class="v">Free</span>
+<span class="d">And it stays free.</span></dd>
+</div>
+</dl>
+</div>
+</section>
+
+<section class="block" id="goal" aria-labelledby="goal-title">
+<div class="wrap">
+<h2 id="goal-title" data-reveal>The goal.</h2>
+<p class="equation" data-reveal aria-label="food plus question could read as: are you hungry?">food <span class="op">+</span> question<span class="q">“are you hungry?”</span></p>
+<div class="split goal-copy" data-reveal>
+<div class="head"></div>
+<div class="body">
+<p class="big">A visual language that two sides learn from each other, and that becomes <em>compositional</em>: glyphs that combine, so food + question could read as “are you hungry?”.</p>
+<p class="muted">Skeebert should end up with a language you picked up by playing, not by reading a manual.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="block" id="roadmap" aria-labelledby="roadmap-title">
+<div class="wrap split">
+<div class="head stick" data-reveal>
+<h2 id="roadmap-title">Roadmap.</h2>
+<p class="muted">These are intentions, not promises. Plans change, and some of this may never happen.</p>
+</div>
+<div class="body" data-reveal>
+<ol class="roadmap">
+<li class="now"><span class="when">Now</span><div><h3>Collecting guesses.</h3><p>Infrastructure is built. Glyphs are untrained noise.</p></div></li>
+<li><span class="when">Phase 1</span><div><h3>First training.</h3><p>A bootstrap where Skeebert plays a guessing game with itself so glyphs become distinguishable, then learning from human guesses.</p></div></li>
+<li><span class="when">Phase 2</span><div><h3>Compositional glyphs.</h3><p>Glyphs that combine concepts, and a public dictionary page.</p></div></li>
+<li><span class="when">Phase 3</span><div><h3>Sentences.</h3><p>Sequences of glyphs. Maybe animated glyphs, maybe sound like Rocky's chords.</p></div></li>
+<li><span class="when">Phase 4</span><div><h3>Its own brain.</h3><p>A small model trained to make the choices Haiku makes, learned from Haiku's past answers. It would first think for Skeebert while it's asleep, then take over more as it gets good. Haiku becomes a teacher it outgrows.</p></div></li>
+<li><span class="when">Someday</span><div><h3>Meeting booper.</h3><p>Maybe Skeebert and booper talk to each other.</p></div></li>
+</ol>
+</div>
+</div>
+</section>
+
+<section class="block fine" id="fine-print" aria-labelledby="fine-title">
+<div class="wrap split">
+<div class="head" data-reveal>
+<h2 id="fine-title">The fine print, at a readable size.</h2>
+</div>
+<div class="body" data-reveal>
+<p class="big">At first the glyphs are noise and mean nothing. Training hasn't started yet; the first runs happen once enough guesses have been collected. It will learn slowly, and it may never become fluent. If it does, you'll have helped invent a language.</p>
+<p>Skeebert is free and stays free. It keeps what you send it by default and tells you so up front: read the <a href="/privacy">privacy policy</a>, <a href="/terms">terms</a> and <a href="/aup">acceptable use</a>. Questions or problems: <a href="https://github.com/frgmt0/skeebert">github.com/frgmt0/skeebert</a>.</p>
+<ol class="footnotes">
+<li id="fn-1">Also our only model. <a class="back" href="#ref-1" aria-label="Back to footnote 1 reference">↩&#xFE0E;</a></li>
+<li id="fn-2">Every set of one, two or three different concepts out of <span data-spec="n_concepts">218</span>. Order doesn't count: food + question and question + food are the same message, and draw the same glyph. <a class="back" href="#ref-2" aria-label="Back to footnote 2 reference">↩&#xFE0E;</a></li>
+<li id="fn-3">Approximate. The brain is billed per token, so a long conversation costs a bit more than a short one. <a class="back" href="#ref-3" aria-label="Back to footnote 3 reference">↩&#xFE0E;</a></li>
+</ol>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="foot">
+<div class="wrap">
+<nav aria-label="Footer">
+<a href="/privacy">Privacy policy</a><a href="/terms">Terms of service</a><a href="/aup">Acceptable use</a><a href="https://booper.frgmt.xyz">booper</a><a href="https://github.com/frgmt0/skeebert">GitHub</a>
+</nav>
+<p>No analytics, no tracking, no cookies on this site.</p>
+</div>
+</footer>
 </body>
 </html>
