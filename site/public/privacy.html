@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>skeebert: privacy</title>
+<meta name="description" content="Skeebert is a small alien that talks in glyphs. You learn its language by guessing.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<a class="brand" href="/"><svg class="glyph" width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 30 Q14 6 20 22 T33 9"/><circle cx="12" cy="31" r="1.5"/></svg>skeebert</a>
+<nav class="main" aria-label="Main">
+<a href="/">home</a><a href="/privacy" aria-current="page">privacy</a><a href="/terms">terms</a><a href="/aup">acceptable use</a>
+</nav>
+</header>
+<main>
+<h1>Privacy policy</h1>
+<p class="note">Effective October 8, 2026.</p>
+<p>Skeebert is a bot that learns a picture language from what people say to it and guess about it. That only works if what people define is kept. So, unlike its sibling booper, <strong>Skeebert keeps your interactions by default</strong>, and this page says exactly what that means. You can stop it or delete it all yourself at any time.</p>
+
+<h2>What is kept</h2>
+<p>From anyone who interacts with Skeebert, by default:</p>
+<ul>
+<li>messages addressed to Skeebert: @mentions, <code>/skeebert</code> commands, replies to its messages, and DMs to it</li>
+<li>your guesses, whether from the Guess button or a reply</li>
+<li>the intent Skeebert chose (the concepts it meant), the glyph it showed, and the score your guess got</li>
+</ul>
+<p>This is used to train Skeebert. That is the complete list. Skeebert does not scan channels, read history, or keep messages that aren't addressed to it. It does not collect server or channel names, avatars, member lists, or presence.</p>
+
+<h2>How you're identified</h2>
+<p>Your data is stored under a salted hash of your Discord user id, not the id itself. The salt never leaves the machine the bot runs on.</p>
+
+<h2>Third-party processing</h2>
+<p>To decide what to say, Skeebert's brain is Claude Haiku 5.5 from Anthropic. <strong>The text of messages addressed to Skeebert, plus a few recent messages from the same conversation for context, are sent to Anthropic's API.</strong> Anthropic processes that data under its <a href="https://www.anthropic.com/legal/commercial-terms">commercial terms</a>; see also Anthropic's <a href="https://www.anthropic.com/legal/privacy">privacy policy</a>. We make no claims here beyond that; their terms and policy are the authority on how they handle it. Don't put anything in a message to Skeebert that you wouldn't want sent to them.</p>
+
+<h2>Not published</h2>
+<p>Unlike booper, Skeebert's data is not published as a public dataset. If that ever changes, it will be announced in Discord and on this site before it applies, and nothing collected before the change would be published without asking you.</p>
+
+<h2>Your data is never sold</h2>
+<p>Data collected through Discord is never sold, rented, licensed for advertising, or traded, and no such sale would happen without the express consent of Discord itself, which we do not intend to seek. Skeebert is free and will stay free for as long as it holds data collected through Discord, in keeping with Discord's terms on the resale of platform data.</p>
+
+<h2>Your controls</h2>
+<p>You don't have to ask anyone. Run <code>/skeebert privacy</code> to see what's kept about you. It has two buttons:</p>
+<ul>
+<li><strong>Stop keeping</strong>: Skeebert still talks to you, but nothing new from you is stored.</li>
+<li><strong>Delete everything</strong>: immediately deletes all your messages, guesses, and the glyphs made for you.</li>
+</ul>
+<p>One honest limit: trained model weights can't un-learn something. What we can promise is that deleted data is excluded from all future training runs. Anything a past run already learned from stays blended into the weights. Messages already sent to Anthropic are governed by Anthropic's terms above.</p>
+<p>The first time you talk to Skeebert, it shows a one-line notice linking to this page. There's no gate and no wall of text.</p>
+
+<h2>Retention and security</h2>
+<p>Data is kept for as long as the project runs, on a single machine the operator controls, unless you delete it. Only the operator has access. This site has no analytics or tracking.</p>
+
+<h2>Age</h2>
+<p>Skeebert is only for people old enough to use Discord under Discord's own terms (13, or higher where local law says so). We don't knowingly keep data from anyone younger; if we learn we have, it gets deleted.</p>
+
+<h2>Discord</h2>
+<p>Skeebert operates under the Discord Developer Terms of Service and Developer Policy. Collecting the minimum, honoring deletion, and not selling platform data are how we hold ourselves to them.</p>
+
+<h2>Changes and contact</h2>
+<p>Changes to this policy will be announced in Discord and on this site, and anything that widens what's collected or shared will be announced before it applies. Questions, complaints, or data requests: open an issue at <a href="https://github.com/frgmt0/skeebert">github.com/frgmt0/skeebert</a>.</p>
+</main>
+<footer>
+<a href="/privacy">privacy policy</a><a href="/terms">terms of service</a><a href="/aup">acceptable use</a><a href="https://booper.frgmt.xyz">booper</a><a href="https://github.com/frgmt0/skeebert">github</a>
+<p>No analytics, no tracking, no cookies on this site.</p>
+</footer>
+</div>
+</body>
+</html>

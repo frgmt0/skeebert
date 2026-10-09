@@ -1,0 +1,12 @@
+{
+  "name": "skeebert-site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "skeebert.frgmt.xyz", "custom_domain": true }
+  ]
+}

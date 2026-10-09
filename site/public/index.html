@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>skeebert</title>
+<meta name="description" content="Skeebert is a small alien that talks in glyphs. You learn its language by guessing.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<a class="brand" href="/"><svg class="glyph" width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 30 Q14 6 20 22 T33 9"/><circle cx="12" cy="31" r="1.5"/></svg>skeebert</a>
+<nav class="main" aria-label="Main">
+<a href="/" aria-current="page">home</a><a href="/privacy">privacy</a><a href="/terms">terms</a><a href="/aup">acceptable use</a>
+</nav>
+</header>
+<main>
+<h1>A small alien that talks in glyphs.</h1>
+<p class="lead">Skeebert doesn't use words. It draws little stroke pictures, and you work out what they mean. Nobody knows the language yet, including Skeebert. We're making it up together.</p>
+<div class="hero" aria-hidden="true">
+<svg class="glyph" viewBox="0 0 60 60"><path d="M10 48 Q18 8 30 30 T50 12"/><path d="M14 20 L22 26"/></svg>
+<svg class="glyph" viewBox="0 0 60 60"><circle cx="30" cy="30" r="16"/><path d="M30 14 L30 4"/><path d="M22 34 Q30 42 38 34"/></svg>
+<svg class="glyph" viewBox="0 0 60 60"><path d="M12 14 L48 18 L40 46 L16 40 Z"/><path d="M26 28 L34 30"/></svg>
+<svg class="glyph" viewBox="0 0 60 60"><path d="M8 40 Q30 -2 52 40"/><path d="M20 44 L40 44"/><circle cx="30" cy="26" r="2"/></svg>
+</div>
+<p class="note">Decoration only. These shapes are not real Skeebert output and don't mean anything.</p>
+
+<h2>What it is</h2>
+<p>Skeebert is a Discord bot inspired by Rocky from <em>Project Hail Mary</em>, an alien whose language you have to learn before you can talk to him. Skeebert answers in <strong>glyphs</strong> instead of words. At first they're noise. As people guess what they mean, a shared picture language is supposed to take shape.</p>
+<p>It's a sibling of <a href="https://booper.frgmt.xyz">booper</a>. Booper learns words from scratch; Skeebert learns pictures from scratch.</p>
+
+<h2>How to use it</h2>
+<ol class="steps">
+<li><strong>Talk to it.</strong> Say <code>@skeebert hey are you hungry?</code> or use <code>/skeebert say &lt;message&gt;</code>. It answers with a glyph.</li>
+<li><strong>Guess.</strong> Tap the <strong>Guess</strong> button under the glyph, or just reply to the glyph with your guess. You'll see how close you were and what it really meant.</li>
+<li><strong>That's it.</strong> Every guess teaches it. Try <code>/skeebert dictionary</code> to see the glyphs people have cracked so far.</li>
+</ol>
+<p class="note">Also: <code>/skeebert help</code> and <code>/skeebert privacy</code>. Skeebert keeps what you send it by default; see <a href="/privacy">privacy</a>.</p>
+
+<h2>How it works</h2>
+<svg class="diagram" viewBox="0 0 640 130" role="img" aria-label="Diagram: you send a message, the brain picks one to three concepts, the mouth draws a glyph, you guess, and the guess becomes training data for the mouth.">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+<g stroke="currentColor" stroke-width="2" fill="none" marker-end="url(#ar)">
+<path d="M130 45 L168 45"/><path d="M290 45 L328 45"/><path d="M450 45 L488 45"/>
+<path d="M550 76 L550 108 L230 108 L230 78" stroke-dasharray="5 5"/>
+</g>
+<rect class="box" x="10" y="15" width="120" height="60" rx="12"/><text x="70" y="50" text-anchor="middle">you</text>
+<rect class="box" x="170" y="15" width="120" height="60" rx="12"/><text x="230" y="40" text-anchor="middle">brain</text><text x="230" y="58" text-anchor="middle">picks concepts</text>
+<rect class="box" x="330" y="15" width="120" height="60" rx="12"/><text x="390" y="40" text-anchor="middle">mouth</text><text x="390" y="58" text-anchor="middle">draws a glyph</text>
+<rect class="box" x="490" y="15" width="120" height="60" rx="12"/><text x="550" y="40" text-anchor="middle">you guess</text><text x="550" y="58" text-anchor="middle">it reveals</text>
+<text x="390" y="126" text-anchor="middle">guesses become training data for the mouth</text>
+</svg>
+<p>Skeebert has two parts.</p>
+<p>The <strong>brain</strong> is Claude Haiku 5.5, reached through Anthropic's API. It decides what Skeebert wants to say, as one to three concepts from a fixed vocabulary of about 200, like "excited", "food" or "question". The brain never picks shapes.</p>
+<p>The <strong>mouth</strong> is Skeebert's own small model, about 20 million parameters, trained from scratch and starting as pure noise. It turns those concepts into a glyph. The picture language is learned entirely from people.</p>
+<p>When you guess, your guess is scored against what Skeebert actually meant, by similarity of meaning. Getting one of the concepts earns partial credit. Then Skeebert reveals the meaning. Those guesses are the training data.</p>
+<p>When the daily API budget runs out, Skeebert falls asleep: it keeps talking with a simpler local brain until the next day.</p>
+
+<h2>The goal</h2>
+<p>A visual language that two sides learn from each other, and that becomes <em>compositional</em>: glyphs that combine, so that food + question could read as "are you hungry?". Skeebert should end up with a language you picked up by playing, not by reading a manual.</p>
+
+<h2>Roadmap</h2>
+<p>These are intentions, not promises. Plans change, and some of this may never happen.</p>
+<ol class="roadmap">
+<li class="now"><span class="tag">now</span><strong>Collecting guesses.</strong> Infrastructure is built. Glyphs are untrained noise.</li>
+<li><span class="tag">phase 1</span><strong>First training.</strong> A bootstrap where Skeebert plays a guessing game with itself so glyphs become distinguishable, then learning from human guesses.</li>
+<li><span class="tag">phase 2</span><strong>Compositional glyphs</strong> that combine concepts, and a public dictionary page.</li>
+<li><span class="tag">phase 3</span><strong>Sentences</strong>, meaning sequences of glyphs. Maybe animated glyphs, maybe sound like Rocky's chords.</li>
+<li><span class="tag">phase 4</span><strong>A homegrown brain.</strong> Booper as an optional brain, and Skeebert and booper talking to each other.</li>
+</ol>
+
+<h2>Honest expectations</h2>
+<p>At first the glyphs are noise and mean nothing. Training hasn't started yet; the first runs happen once enough guesses have been collected. It will learn slowly, and it may never become fluent. If it does, you'll have helped invent a language.</p>
+
+<h2>The fine print</h2>
+<p>Skeebert is free and stays free. It keeps what you send it by default and tells you so up front: read the <a href="/privacy">privacy policy</a>, <a href="/terms">terms</a> and <a href="/aup">acceptable use</a>. Questions or problems: <a href="https://github.com/frgmt0/skeebert">github.com/frgmt0/skeebert</a>.</p>
+</main>
+<footer>
+<a href="/privacy">privacy policy</a><a href="/terms">terms of service</a><a href="/aup">acceptable use</a><a href="https://booper.frgmt.xyz">booper</a><a href="https://github.com/frgmt0/skeebert">github</a>
+<p>No analytics, no tracking, no cookies on this site.</p>
+</footer>
+</div>
+</body>
+</html>
