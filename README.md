@@ -219,6 +219,43 @@ All settings come from the environment or `.env`; see `.env.example`.
 `SKEEBERT_DATA_DIR`, `SKEEBERT_CHECKPOINT_DIR` and `SKEEBERT_RENDERS_DIR` move
 the data. Never point experiments at the live `data/`.
 
+## Deploying
+
+Skeebert deploys to the Linux host `desktop` as a systemd user service with
+the `deployer` CLI (`deploy.toml`).
+
+```bash
+cp .env.example .env.prod   # keep only SKEEBERT_DISCORD_TOKEN, ANTHROPIC_API_KEY and any overrides
+deployer                    # ship the working tree (deployer deploy --dry-run to preview)
+deployer status
+deployer logs
+deployer restart
+```
+
+`.env.prod` is gitignored and copied over SSH to a mode-600 file on the host,
+never into the release. The deployed `[env]` points state outside the
+release directories, under `/home/jason/.local/share/skeebert/` on desktop:
+`data/` (database and the hash salt: never delete or recreate it),
+`checkpoints/` and `renders/`. Code deploys never touch them. The bot only
+makes outbound connections, so there is no tunnel.
+
+Checkpoints are trained on the Mac and shipped separately from code:
+
+```bash
+rsync -av checkpoints/ desktop:/home/jason/.local/share/skeebert/checkpoints/
+ssh desktop 'cd ~/.local/share/deployer/skeebert/current && \
+  SKEEBERT_DATA_DIR=/home/jason/.local/share/skeebert/data \
+  SKEEBERT_CHECKPOINT_DIR=/home/jason/.local/share/skeebert/checkpoints \
+  .venv/bin/skeebert checkpoints'          # read the metrics, then:
+ssh desktop 'cd ~/.local/share/deployer/skeebert/current && \
+  SKEEBERT_DATA_DIR=/home/jason/.local/share/skeebert/data \
+  SKEEBERT_CHECKPOINT_DIR=/home/jason/.local/share/skeebert/checkpoints \
+  .venv/bin/skeebert promote VERSION'
+deployer restart
+```
+
+`current` is deployer's symlink to the active release.
+
 ## Layout
 
 | module | is |

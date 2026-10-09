@@ -26,6 +26,7 @@ First release of the application layer, on top of the ML core.
   `promote`, `train` (estimate first, refuses without `--yes`), `forget`,
   `keeping`.
 - README, CLAUDE.md and `.env.example`.
+- Deployment config (`deploy.toml`) for `deployer` to host `desktop`, with state kept outside releases and secrets from `.env.prod`.
 
 Fixes from review (before release):
 

@@ -1,0 +1,36 @@
+[service]
+name = "skeebert"
+command = ".venv/bin/skeebert bot"
+restart = "always"
+
+[deploy]
+host = "desktop"
+path = "/home/jason/.local/share/deployer/skeebert"
+setup = [
+  "mkdir -p /home/jason/.local/share/skeebert/data /home/jason/.local/share/skeebert/checkpoints /home/jason/.local/share/skeebert/renders",
+  "/home/jason/.local/bin/uv sync --frozen --no-dev",
+]
+exclude = [
+  ".git",
+  ".venv",
+  "__pycache__",
+  ".pytest_cache",
+  "*.egg-info",
+  "data/",
+  "checkpoints/",
+  "renders/",
+  "site/",
+  ".env",
+  ".env.*",
+  ".DS_Store",
+]
+
+[env]
+SKEEBERT_DATA_DIR = "/home/jason/.local/share/skeebert/data"
+SKEEBERT_CHECKPOINT_DIR = "/home/jason/.local/share/skeebert/checkpoints"
+SKEEBERT_RENDERS_DIR = "/home/jason/.local/share/skeebert/renders"
+SKEEBERT_DEVICE = "cpu"
+PYTHONUNBUFFERED = "1"
+
+[secrets]
+file = ".env.prod"

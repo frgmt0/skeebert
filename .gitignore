@@ -7,6 +7,8 @@ data/
 checkpoints/
 renders/
 .env
+.env.*
+!.env.example
 *.db
 site/.wrangler/
 node_modules/

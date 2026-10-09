@@ -16,6 +16,19 @@ the operational map: what must never be broken.
 | `.env` | Discord token, Anthropic key | never commit, never paste values anywhere |
 | `site/` | the public site (skeebert.frgmt.xyz) | its promises are binding |
 
+## Deployment
+
+`deploy.toml` ships to host `desktop` with `deployer` (`deployer`, `deployer
+status`, `deployer logs`, `deployer restart`). Secrets come from a local,
+gitignored `.env.prod` (made from `.env.example`). Production state lives
+outside the release dirs in `/home/jason/.local/share/skeebert/{data,checkpoints,renders}`
+(set via `[env]`); `data/` holds the live database and salt, never delete or
+recreate it. The active release is `~/.local/share/deployer/skeebert/current`.
+Checkpoints are rsynced there by hand, then promoted on desktop with
+`skeebert promote VERSION` run from `current` with the three `SKEEBERT_*_DIR`
+vars set, then `deployer restart` (see README "Deploying"). Don't deploy,
+promote or restart unprompted.
+
 ## Invariants
 
 - **The site's promises are binding.** `site/public/privacy.html`, `terms.html`
