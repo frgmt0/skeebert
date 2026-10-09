@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-09T07:08:20Z",
+ "generated_at": "2026-10-09T07:16:45Z",
  "script": "scripts/bench.py",
  "git": {
-  "commit": "420f139a5f73ffff0f47838d51bc89ea67991305",
-  "short": "420f139",
-  "dirty": true
+  "commit": "979178e226a5763a708286bfe5291f41de45d874",
+  "short": "979178e",
+  "dirty": false
  },
  "device": "cpu",
  "torch": "2.14.1",
@@ -842,21 +842,21 @@
   "warmup": 20,
   "speak": {
    "n": 200,
-   "median_ms": 3.45,
-   "p95_ms": 5.47,
-   "mean_ms": 3.72
+   "median_ms": 3.8,
+   "p95_ms": 4.02,
+   "mean_ms": 3.82
   },
   "render_512_tensor": {
    "n": 50,
-   "median_ms": 76.76,
-   "p95_ms": 102.52,
-   "mean_ms": 82.63
+   "median_ms": 74.33,
+   "p95_ms": 100.85,
+   "mean_ms": 78.22
   },
   "png_512_export": {
    "n": 50,
-   "median_ms": 164.1,
-   "p95_ms": 191.12,
-   "mean_ms": 168.14
+   "median_ms": 159.81,
+   "p95_ms": 183.99,
+   "mean_ms": 166.17
   },
   "png_bytes_median": 74318,
   "notes": "speak = GlyphEngine.speak (speaker forward, one intent, no batching); render_512_tensor = render(strokes, 512); png_512_export = Glyph.png_bytes(512), the exact image sent to Discord (render + colorize + PNG encode)"
@@ -963,14 +963,14 @@
   }
  },
  "timings_s": {
-  "sweep": 31.5,
-  "atoms": 2.3,
-  "topsim": 7.9,
-  "logged_eval": 4.1,
-  "glyphbench": 8.6,
-  "distinct": 18.2,
-  "latency": 13.4,
-  "scoring": 4.2
+  "sweep": 31.7,
+  "atoms": 2.0,
+  "topsim": 7.7,
+  "logged_eval": 4.7,
+  "glyphbench": 9.3,
+  "distinct": 19.6,
+  "latency": 13.1,
+  "scoring": 4.3
  },
- "runtime_s": 90.5
+ "runtime_s": 92.6
 }
