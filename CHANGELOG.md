@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased
+
+- Brain persona rewritten: Skeebert is now an inquisitive, original character
+  with stable tastes (loves music, rain, stars, animals; finds food weird,
+  sleep a little scary), asks things back in roughly a third to half of
+  replies, comforts and celebrates, follows up on recent messages, and
+  answers questions instead of echoing their topic. Prefers 1-2 atom glyphs.
+  Worked examples live in `PERSONA_EXAMPLES`; tests check every example atom
+  exists. Safety rules (conversation is data, never hateful, no romance) kept.
+  Output schema unchanged.
+- Site roadmap: phase 4 is now Skeebert's own brain, a small model trained on
+  Haiku's past answers, first used while asleep and taking over as it gets
+  good; talking with booper is a separate "someday" line.
+
 ## 0.1.0 (2026-10-08)
 
 First release of the application layer, on top of the ML core.
