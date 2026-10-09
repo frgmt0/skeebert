@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Site copy updated for the first training run (30,000 self-play steps, 83% listener accuracy): roadmap and fine print no longer say glyphs are untrained noise.
 - Brain persona rewritten: Skeebert is now an inquisitive, original character
   with stable tastes (loves music, rain, stars, animals; finds food weird,
   sleep a little scary), asks things back in roughly a third to half of
