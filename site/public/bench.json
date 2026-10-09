@@ -1,0 +1,976 @@
+{
+ "generated_at": "2026-10-09T07:08:20Z",
+ "script": "scripts/bench.py",
+ "git": {
+  "commit": "420f139a5f73ffff0f47838d51bc89ea67991305",
+  "short": "420f139",
+  "dirty": true
+ },
+ "device": "cpu",
+ "torch": "2.14.1",
+ "python": "3.12.8",
+ "machine": "Darwin arm64",
+ "checkpoints": {
+  "untrained": {
+   "file": "init.pt",
+   "version": "109ec8012d82",
+   "stage": "init"
+  },
+  "trained": {
+   "file": "ckpt-6d99ccb9bda1.pt",
+   "version": "6d99ccb9bda1",
+   "stage": "bootstrap"
+  }
+ },
+ "model": {
+  "params": {
+   "speaker": 10738616,
+   "listener": 5118186,
+   "proxy": 5203344,
+   "total": 21060146
+  },
+  "n_strokes": 6,
+  "params_per_stroke": 8,
+  "image_size_train": 64,
+  "export_size": 512,
+  "n_concepts": 218,
+  "n_categories": 9,
+  "categories": [
+   {
+    "name": "people",
+    "n": 10
+   },
+   {
+    "name": "feeling",
+    "n": 28
+   },
+   {
+    "name": "speech",
+    "n": 26
+   },
+   {
+    "name": "action",
+    "n": 47
+   },
+   {
+    "name": "thing",
+    "n": 33
+   },
+   {
+    "name": "place",
+    "n": 21
+   },
+   {
+    "name": "time",
+    "n": 14
+   },
+   {
+    "name": "quantity",
+    "n": 11
+   },
+   {
+    "name": "modifier",
+    "n": 28
+   }
+  ],
+  "max_atoms": 3,
+  "possible_messages": 1726887,
+  "d_model": 384,
+  "enc_layers": 2,
+  "dec_layers": 3,
+  "n_heads": 6,
+  "channels": [
+   48,
+   96,
+   192,
+   320
+  ],
+  "hidden": 512,
+  "render_segments": 12
+ },
+ "logged_eval_rerun": {
+  "procedure": "skeebert.train._Stage._eval_game with TrainConfig() defaults",
+  "device": "cpu",
+  "untrained": {
+   "eval_candidate_acc": 0.0195,
+   "eval_exact_set_acc": 0.0,
+   "eval_topsim": 0.066,
+   "eval_ink": 0.0933
+  },
+  "trained": {
+   "eval_candidate_acc": 0.8301,
+   "eval_exact_set_acc": 0.6934,
+   "eval_topsim": 0.059,
+   "eval_ink": 0.0527
+  }
+ },
+ "sweep": {
+  "n": 2048,
+  "seed_intents": 1234,
+  "seed_distractors": 4321,
+  "seed_aug": 777,
+  "atom_count_probs": [
+   0.4,
+   0.35,
+   0.25
+  ],
+  "hard_distractor_frac": 0.5,
+  "candidate_sweep": [
+   {
+    "candidates": 2,
+    "chance": 0.5,
+    "untrained": {
+     "value": 0.4995,
+     "k": 1023,
+     "n": 2048,
+     "ci95": [
+      0.4779,
+      0.5211
+     ]
+    },
+    "untrained_augmented": {
+     "value": 0.4995,
+     "k": 1023,
+     "n": 2048,
+     "ci95": [
+      0.4779,
+      0.5211
+     ]
+    },
+    "trained": {
+     "value": 0.9839,
+     "k": 2015,
+     "n": 2048,
+     "ci95": [
+      0.9775,
+      0.9885
+     ]
+    },
+    "trained_augmented": {
+     "value": 0.98,
+     "k": 2007,
+     "n": 2048,
+     "ci95": [
+      0.973,
+      0.9852
+     ]
+    }
+   },
+   {
+    "candidates": 4,
+    "chance": 0.25,
+    "untrained": {
+     "value": 0.2158,
+     "k": 442,
+     "n": 2048,
+     "ci95": [
+      0.1985,
+      0.2342
+     ]
+    },
+    "untrained_augmented": {
+     "value": 0.2153,
+     "k": 441,
+     "n": 2048,
+     "ci95": [
+      0.1981,
+      0.2337
+     ]
+    },
+    "trained": {
+     "value": 0.9521,
+     "k": 1950,
+     "n": 2048,
+     "ci95": [
+      0.942,
+      0.9606
+     ]
+    },
+    "trained_augmented": {
+     "value": 0.9468,
+     "k": 1939,
+     "n": 2048,
+     "ci95": [
+      0.9362,
+      0.9557
+     ]
+    }
+   },
+   {
+    "candidates": 8,
+    "chance": 0.125,
+    "untrained": {
+     "value": 0.082,
+     "k": 168,
+     "n": 2048,
+     "ci95": [
+      0.0709,
+      0.0947
+     ]
+    },
+    "untrained_augmented": {
+     "value": 0.0859,
+     "k": 176,
+     "n": 2048,
+     "ci95": [
+      0.0746,
+      0.0989
+     ]
+    },
+    "trained": {
+     "value": 0.9014,
+     "k": 1846,
+     "n": 2048,
+     "ci95": [
+      0.8877,
+      0.9135
+     ]
+    },
+    "trained_augmented": {
+     "value": 0.8936,
+     "k": 1830,
+     "n": 2048,
+     "ci95": [
+      0.8795,
+      0.9062
+     ]
+    }
+   },
+   {
+    "candidates": 16,
+    "chance": 0.0625,
+    "untrained": {
+     "value": 0.0205,
+     "k": 42,
+     "n": 2048,
+     "ci95": [
+      0.0152,
+      0.0276
+     ]
+    },
+    "untrained_augmented": {
+     "value": 0.0205,
+     "k": 42,
+     "n": 2048,
+     "ci95": [
+      0.0152,
+      0.0276
+     ]
+    },
+    "trained": {
+     "value": 0.8369,
+     "k": 1714,
+     "n": 2048,
+     "ci95": [
+      0.8203,
+      0.8523
+     ]
+    },
+    "trained_augmented": {
+     "value": 0.8223,
+     "k": 1684,
+     "n": 2048,
+     "ci95": [
+      0.8051,
+      0.8382
+     ]
+    }
+   },
+   {
+    "candidates": 32,
+    "chance": 0.0312,
+    "untrained": {
+     "value": 0.0044,
+     "k": 9,
+     "n": 2048,
+     "ci95": [
+      0.0023,
+      0.0083
+     ]
+    },
+    "untrained_augmented": {
+     "value": 0.0044,
+     "k": 9,
+     "n": 2048,
+     "ci95": [
+      0.0023,
+      0.0083
+     ]
+    },
+    "trained": {
+     "value": 0.7671,
+     "k": 1571,
+     "n": 2048,
+     "ci95": [
+      0.7483,
+      0.7849
+     ]
+    },
+    "trained_augmented": {
+     "value": 0.7422,
+     "k": 1520,
+     "n": 2048,
+     "ci95": [
+      0.7228,
+      0.7607
+     ]
+    }
+   }
+  ],
+  "distractor_type_16": [
+   {
+    "distractors": "one-concept-off only",
+    "hard_frac": 1.0,
+    "untrained": {
+     "value": 0.0117,
+     "k": 24,
+     "n": 2048,
+     "ci95": [
+      0.0079,
+      0.0174
+     ]
+    },
+    "trained": {
+     "value": 0.7686,
+     "k": 1574,
+     "n": 2048,
+     "ci95": [
+      0.7498,
+      0.7863
+     ]
+    }
+   },
+   {
+    "distractors": "random only",
+    "hard_frac": 0.0,
+    "untrained": {
+     "value": 0.0635,
+     "k": 130,
+     "n": 2048,
+     "ci95": [
+      0.0537,
+      0.0749
+     ]
+    },
+    "trained": {
+     "value": 0.9653,
+     "k": 1977,
+     "n": 2048,
+     "ci95": [
+      0.9565,
+      0.9724
+     ]
+    }
+   },
+   {
+    "distractors": "mixed 50/50 (training mix)",
+    "hard_frac": 0.5,
+    "untrained": {
+     "value": 0.0156,
+     "k": 32,
+     "n": 2048,
+     "ci95": [
+      0.0111,
+      0.022
+     ]
+    },
+    "trained": {
+     "value": 0.8389,
+     "k": 1718,
+     "n": 2048,
+     "ci95": [
+      0.8223,
+      0.8542
+     ]
+    }
+   }
+  ],
+  "exact_set_by_size": [
+   {
+    "atoms": 1,
+    "n": 805,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 805,
+     "ci95": [
+      0.0,
+      0.0047
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 805,
+     "n": 805,
+     "ci95": [
+      0.9953,
+      1.0
+     ]
+    }
+   },
+   {
+    "atoms": 2,
+    "n": 755,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 755,
+     "ci95": [
+      0.0,
+      0.0051
+     ]
+    },
+    "trained": {
+     "value": 0.7179,
+     "k": 542,
+     "n": 755,
+     "ci95": [
+      0.6847,
+      0.7488
+     ]
+    }
+   },
+   {
+    "atoms": 3,
+    "n": 488,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 488,
+     "ci95": [
+      0.0,
+      0.0078
+     ]
+    },
+    "trained": {
+     "value": 0.0656,
+     "k": 32,
+     "n": 488,
+     "ci95": [
+      0.0468,
+      0.0911
+     ]
+    }
+   },
+   {
+    "atoms": "all",
+    "n": 2048,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 2048,
+     "ci95": [
+      0.0,
+      0.0019
+     ]
+    },
+    "trained": {
+     "value": 0.6733,
+     "k": 1379,
+     "n": 2048,
+     "ci95": [
+      0.6527,
+      0.6933
+     ]
+    }
+   }
+  ]
+ },
+ "atoms": {
+  "n": 218,
+  "chance_top1": 0.00459,
+  "chance_top5": 0.02294,
+  "categories": [
+   {
+    "category": "people",
+    "n": 10,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 10,
+     "ci95": [
+      0.0,
+      0.2775
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 10,
+     "n": 10,
+     "ci95": [
+      0.7225,
+      1.0
+     ]
+    }
+   },
+   {
+    "category": "feeling",
+    "n": 28,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 28,
+     "ci95": [
+      0.0,
+      0.1206
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 28,
+     "n": 28,
+     "ci95": [
+      0.8794,
+      1.0
+     ]
+    }
+   },
+   {
+    "category": "speech",
+    "n": 26,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 26,
+     "ci95": [
+      0.0,
+      0.1287
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 26,
+     "n": 26,
+     "ci95": [
+      0.8713,
+      1.0
+     ]
+    }
+   },
+   {
+    "category": "action",
+    "n": 47,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 47,
+     "ci95": [
+      0.0,
+      0.0756
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 47,
+     "n": 47,
+     "ci95": [
+      0.9244,
+      1.0
+     ]
+    }
+   },
+   {
+    "category": "thing",
+    "n": 33,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 33,
+     "ci95": [
+      0.0,
+      0.1043
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 33,
+     "n": 33,
+     "ci95": [
+      0.8957,
+      1.0
+     ]
+    }
+   },
+   {
+    "category": "place",
+    "n": 21,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 21,
+     "ci95": [
+      0.0,
+      0.1546
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 21,
+     "n": 21,
+     "ci95": [
+      0.8454,
+      1.0
+     ]
+    }
+   },
+   {
+    "category": "time",
+    "n": 14,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 14,
+     "ci95": [
+      0.0,
+      0.2153
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 14,
+     "n": 14,
+     "ci95": [
+      0.7847,
+      1.0
+     ]
+    }
+   },
+   {
+    "category": "quantity",
+    "n": 11,
+    "untrained": {
+     "value": 0.0909,
+     "k": 1,
+     "n": 11,
+     "ci95": [
+      0.0162,
+      0.3774
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 11,
+     "n": 11,
+     "ci95": [
+      0.7412,
+      1.0
+     ]
+    }
+   },
+   {
+    "category": "modifier",
+    "n": 28,
+    "untrained": {
+     "value": 0.0,
+     "k": 0,
+     "n": 28,
+     "ci95": [
+      0.0,
+      0.1206
+     ]
+    },
+    "trained": {
+     "value": 1.0,
+     "k": 28,
+     "n": 28,
+     "ci95": [
+      0.8794,
+      1.0
+     ]
+    }
+   }
+  ],
+  "untrained": {
+   "top1": {
+    "value": 0.0046,
+    "k": 1,
+    "n": 218,
+    "ci95": [
+     0.0008,
+     0.0255
+    ]
+   },
+   "top5": {
+    "value": 0.0321,
+    "k": 7,
+    "n": 218,
+    "ci95": [
+     0.0156,
+     0.0648
+    ]
+   }
+  },
+  "trained": {
+   "top1": {
+    "value": 1.0,
+    "k": 218,
+    "n": 218,
+    "ci95": [
+     0.9827,
+     1.0
+    ]
+   },
+   "top5": {
+    "value": 1.0,
+    "k": 218,
+    "n": 218,
+    "ci95": [
+     0.9827,
+     1.0
+    ]
+   }
+  }
+ },
+ "topsim": {
+  "n_per_seed": 512,
+  "seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "definition": "Spearman correlation between Jaccard meaning distance and L2 glyph distance over all pairs (skeebert.train.topographic_similarity), 64px renders",
+  "untrained": {
+   "mean": 0.0624,
+   "sd": 0.0056,
+   "per_seed": [
+    0.0642,
+    0.0577,
+    0.0705,
+    0.0629,
+    0.0567
+   ]
+  },
+  "trained": {
+   "mean": 0.0492,
+   "sd": 0.0029,
+   "per_seed": [
+    0.0474,
+    0.0497,
+    0.0469,
+    0.0481,
+    0.054
+   ]
+  }
+ },
+ "glyphbench": {
+  "name": "GlyphBench v1",
+  "rule": "Eligibility: the system's entire answer must be a single glyph of at most 6 quadratic strokes, with no words. Eligible systems draw 1,000 intents; skeebert's own trained listener then picks the intended meaning out of 16 candidates (half of the distractors differ by one concept) from the glyph alone, after the training-time augmentation (rotation, scale, shift, pixel noise). Score = share picked correctly. Ineligible systems score 0% by rule; they are not run.",
+  "n": 1000,
+  "candidates": 16,
+  "chance": 0.0625,
+  "seed": 7,
+  "reader": "listener of checkpoint 6d99ccb9bda1",
+  "entrants": [
+   {
+    "name": "untrained",
+    "version": "109ec8012d82",
+    "eligible": true,
+    "score": {
+     "value": 0.043,
+     "k": 43,
+     "n": 1000,
+     "ci95": [
+      0.0321,
+      0.0574
+     ]
+    }
+   },
+   {
+    "name": "trained",
+    "version": "6d99ccb9bda1",
+    "eligible": true,
+    "score": {
+     "value": 0.809,
+     "k": 809,
+     "n": 1000,
+     "ci95": [
+      0.7835,
+      0.8322
+     ]
+    }
+   },
+   {
+    "name": "Opus 5.5",
+    "eligible": false,
+    "score": null,
+    "score_by_rule": 0.0,
+    "note": "answers in words; not run"
+   },
+   {
+    "name": "GPT 6.1 Sol",
+    "eligible": false,
+    "score": null,
+    "score_by_rule": 0.0,
+    "note": "answers in words; not run"
+   },
+   {
+    "name": "Gemini 4 Argon",
+    "eligible": false,
+    "score": null,
+    "score_by_rule": 0.0,
+    "note": "answers in words; not run"
+   }
+  ]
+ },
+ "distinctness": {
+  "intents": 122,
+  "variations_per_intent": 8,
+  "size_px": 64,
+  "seed": 99,
+  "metric": "mean absolute per-pixel difference in ink coverage (0 = identical, 1 = opposite)",
+  "variation": "GlyphEngine.speak(intent, variation=v), v = 0..7 (speaker slot noise, scale 0.35)",
+  "untrained": {
+   "between_meanings": 0.12014,
+   "between_pairs": 7381,
+   "within_meaning": 0.09465,
+   "within_pairs": 3416,
+   "ratio": 1.269
+  },
+  "trained": {
+   "between_meanings": 0.07697,
+   "between_pairs": 7381,
+   "within_meaning": 0.00472,
+   "within_pairs": 3416,
+   "ratio": 16.324
+  }
+ },
+ "latency": {
+  "device": "cpu",
+  "torch_threads": 6,
+  "warmup": 20,
+  "speak": {
+   "n": 200,
+   "median_ms": 3.45,
+   "p95_ms": 5.47,
+   "mean_ms": 3.72
+  },
+  "render_512_tensor": {
+   "n": 50,
+   "median_ms": 76.76,
+   "p95_ms": 102.52,
+   "mean_ms": 82.63
+  },
+  "png_512_export": {
+   "n": 50,
+   "median_ms": 164.1,
+   "p95_ms": 191.12,
+   "mean_ms": 168.14
+  },
+  "png_bytes_median": 74318,
+  "notes": "speak = GlyphEngine.speak (speaker forward, one intent, no batching); render_512_tensor = render(strokes, 512); png_512_export = Glyph.png_bytes(512), the exact image sent to Discord (render + colorize + PNG encode)"
+ },
+ "scoring": {
+  "available": true,
+  "intent": [
+   "food",
+   "question"
+  ],
+  "gloss": "food; asking a question",
+  "embedder": "sentence-transformers/all-MiniLM-L6-v2",
+  "floor": 0.15,
+  "ceil": 0.8,
+  "whole_weight": 0.5,
+  "rows": [
+   {
+    "guess": "are you hungry?",
+    "score": 0.558
+   },
+   {
+    "guess": "food",
+    "score": 0.833
+   },
+   {
+    "guess": "do you want something to eat?",
+    "score": 0.559
+   },
+   {
+    "guess": "a question",
+    "score": 0.438
+   },
+   {
+    "guess": "hello",
+    "score": 0.13
+   },
+   {
+    "guess": "I love dogs",
+    "score": 0.009
+   }
+  ]
+ },
+ "training_run": {
+  "source": "checkpoints/logs/20261009T040324427682Z-bootstrap-109ec8012d82.jsonl",
+  "version": "6d99ccb9bda1",
+  "parent": "109ec8012d82",
+  "device": "mps",
+  "steps": 30000,
+  "seconds": 7830.7,
+  "seconds_per_step": 0.261,
+  "final_eval": {
+   "eval_candidate_acc": 0.8301,
+   "eval_exact_set_acc": 0.6934,
+   "eval_topsim": 0.059,
+   "eval_ink": 0.0527,
+   "listener_resets": 5.0
+  },
+  "listener_reset_steps": [
+   5000,
+   10000,
+   15000,
+   20000,
+   25000
+  ],
+  "batch_size": 64
+ },
+ "reported": {
+  "as_of": "2026-10-08",
+  "brain": {
+   "model": "Claude Haiku 5.5",
+   "model_id": "claude-haiku-5-5",
+   "method": "structured output over the 218-concept enum",
+   "source": "skeebert/brain/haiku.py"
+  },
+  "ledger": {
+   "calls": 4,
+   "usd": 0.0008,
+   "tokens_in": 408,
+   "tokens_out": 102,
+   "cache_read": 14505,
+   "cache_write": 4835,
+   "source": "live spend ledger on the production host"
+  },
+  "persona_tuning": {
+   "calls": 55,
+   "usd": 0.0062,
+   "source": "operator's tuning session, 2026-10-08"
+  },
+  "daily_budget_usd": 6.0,
+  "human_eval": {
+   "guesses": 4,
+   "people": 1,
+   "mean_score": 0.346,
+   "unlock_threshold": 300,
+   "score_definition": "rescaled MiniLM cosine with per-concept partial credit (skeebert/scoring.py)",
+   "source": "live database on the production host"
+  },
+  "prices_per_mtok_usd": {
+   "input": 0.1,
+   "output": 0.5,
+   "cache_read": 0.01,
+   "cache_write": 0.125,
+   "source": "README.md, Budget and sleep (configured defaults)"
+  }
+ },
+ "timings_s": {
+  "sweep": 31.5,
+  "atoms": 2.3,
+  "topsim": 7.9,
+  "logged_eval": 4.1,
+  "glyphbench": 8.6,
+  "distinct": 18.2,
+  "latency": 13.4,
+  "scoring": 4.2
+ },
+ "runtime_s": 90.5
+}

@@ -34,6 +34,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from skeebert import concepts
+from skeebert.brain.haiku import PERSONA_EXAMPLES
 from skeebert.glyph import CURRENT_NAME, INIT_NAME, GlyphEngine
 from skeebert.render import render as render_coverage, colorize
 from skeebert.types import MAX_INTENT_ATOMS, Intent
@@ -53,6 +54,8 @@ CURATED: tuple[tuple[str, ...], ...] = (
     ("fire",),
     ("friend",),
 )
+
+EXAMPLE_SIZE = 384  # the persona-example strip
 
 WEB_SIZE = 768  # the decode stage shows these at up to ~560 CSS px
 THUMB_SIZE = 160  # the picker strip
@@ -104,7 +107,8 @@ def main(argv: list[str] | None = None) -> int:
     old_manifest = out / "glyphs.json"
     if old_manifest.exists():
         try:
-            for g in json.loads(old_manifest.read_text()).get("glyphs", []):
+            old = json.loads(old_manifest.read_text())
+            for g in old.get("glyphs", []) + old.get("examples", []):
                 for key in ("png", "webp", "thumb"):
                     name = g.get(key)
                     if name and "/" not in name and (out / name).exists():
@@ -133,6 +137,26 @@ def main(argv: list[str] | None = None) -> int:
             }
         )
 
+    # The persona's worked examples (situation -> atoms, from skeebert/brain/haiku.py),
+    # drawn by the same model. The site shows them as a constructed exchange, labelled as such.
+    examples = []
+    for situation, atoms in PERSONA_EXAMPLES:
+        intent = Intent(atoms)
+        glyph = engine.speak(intent)
+        slug = "ex-" + _slug(intent)
+        (out / f"{slug}.webp").write_bytes(_webp_bytes(glyph, EXAMPLE_SIZE))
+        examples.append(
+            {
+                "id": slug,
+                "situation": situation,
+                "intent": list(atoms),  # the persona's order (most important first)
+                "gloss": intent.gloss(),
+                "webp": f"{slug}.webp",
+                "model_version": glyph.model_version,
+                "strokes": [s.as_list() for s in glyph.strokes],
+            }
+        )
+
     counts = engine.bundle.param_counts()
     cfg = engine.bundle.config
     n = cfg.n_concepts
@@ -156,9 +180,11 @@ def main(argv: list[str] | None = None) -> int:
             "possible_messages": sum(math.comb(n, k) for k in range(1, MAX_INTENT_ATOMS + 1)),
         },
         "glyphs": glyphs,
+        "examples_source": "skeebert/brain/haiku.py PERSONA_EXAMPLES",
+        "examples": examples,
     }
     old_manifest.write_text(json.dumps(manifest, separators=(",", ":")) + "\n")
-    print(f"wrote {len(glyphs)} glyphs from {engine.path.name} ({label}) to {out}")
+    print(f"wrote {len(glyphs)} glyphs and {len(examples)} persona examples from {engine.path.name} ({label}) to {out}")
     return 0
 
 

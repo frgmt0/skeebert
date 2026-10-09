@@ -8,23 +8,28 @@
 <meta name="theme-color" content="#0e1018" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#eceef2" media="(prefers-color-scheme: light)">
 <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <script src="/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<canvas class="edge edge-l" aria-hidden="true"></canvas>
+<canvas class="edge edge-r" aria-hidden="true"></canvas>
 <header class="top">
-<div class="wrap">
-<a class="wordmark" href="/">skeebert</a>
-<nav aria-label="Main">
+<div class="wrap top-in">
+<p class="crumb"><a href="https://frgmt.xyz">frgmt</a><span aria-hidden="true">/</span><a href="/">skeebert</a><span aria-hidden="true">/</span><a href="/aup" aria-current="page">Acceptable use</a></p>
+<nav class="sections" aria-label="Policies">
 <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/aup" aria-current="page">Acceptable use</a>
 </nav>
+<button class="theme" type="button" aria-label="Switch to light theme"><span aria-hidden="true"></span></button>
 </div>
 </header>
 
 <main id="main" class="doc">
 <div class="wrap">
-<div class="doc-head" data-reveal>
+<div class="doc-head">
 <h1>Acceptable use policy</h1>
 </div>
 <div class="doc-grid">
@@ -65,11 +70,12 @@
 </main>
 
 <footer class="foot">
-<div class="wrap">
+<div class="wrap foot-in">
+<p class="mono">© 2026 frgmt</p>
 <nav aria-label="Footer">
 <a href="/">Home</a><a href="/privacy">Privacy policy</a><a href="/terms">Terms of service</a><a href="/aup">Acceptable use</a><a href="https://booper.frgmt.xyz">booper</a><a href="https://github.com/frgmt0/skeebert">GitHub</a>
 </nav>
-<p>No analytics, no tracking, no cookies on this site.</p>
+<p class="small">No analytics, no tracking, no cookies on this site.</p>
 </div>
 </footer>
 </body>
